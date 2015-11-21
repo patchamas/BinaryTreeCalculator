@@ -1,0 +1,264 @@
+MyNode.cs
+
+using System;
+using System.Collections.Generic;
+
+namespace TreeExample {
+    public class MyNode {
+        //Properties
+        public List&lt;MyNode&gt; Children { get; set; }
+        public string Value { get; set; }
+
+        //Set indexer
+        public MyNode this[int index] {
+            get { return Children[index]; }
+            set { Children[index] = value; }
+        }
+
+        //Constructor
+        public MyNode(string _value) {
+            this.Value = _value;
+            this.Children = new List&lt;MyNode&gt;();
+        }
+
+        //Add a child node
+        public void AddChild(MyNode node) {
+            this.Children.Add(node);
+        }
+
+        public void RemoveChild(int index) {
+            this.Children.RemoveAt(index);
+        }
+    }
+}
+
+
+Tree.cs
+
+using System;
+using System.Collections.Generic;
+
+namespace TreeExample {
+    class MyTree {
+        //The root element
+        public MyNode Root { get; set; }
+
+        public MyTree(String value) {
+            this.Root = new MyNode(value);
+        }
+    }
+}
+
+
+            MyTree Tree = new MyTree("Root");
+            Tree.Root.AddChild("child1");
+            Tree.Root.AddChild("child2");
+            Tree.Root.Children[0].AddChild("subChild1");
+
+            //Create a tree with a 'Music' root node
+            MyTree tree = new MyTree("Music");
+
+            //Add three genres
+            tree.Root.AddChild(new MyNode("Rock"));
+            tree.Root.AddChild(new MyNode("Pop"));
+            tree.Root.AddChild(new MyNode("Classic"));
+
+            //Add metal and grunge in the rock genre
+            tree.Root.Children[0].AddChild(new MyNode("Metal"));
+            tree.Root.Children[0].AddChild(new MyNode("Grunge"));
+
+            //Add Country and Schlager to the Pop genre
+            tree.Root.Children[1].AddChild(new MyNode("Country"));
+            tree.Root.Children[1].AddChild(new MyNode("Schlager"));
+
+            //Add Baroque, Romantic and Opera to Classic
+            tree.Root.Children[2].AddChild(new MyNode("Baroque"));
+            tree.Root.Children[2].AddChild(new MyNode("Romantic"));
+            tree.Root.Children[2].AddChild(new MyNode("Opera"));
+
+            //Add French and Italian to the Opera genre
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("French"));
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("Italian"));
+
+
+        private void CreateTree() {
+            //Create a tree with a 'Music' root node
+            MyTree tree = new MyTree("Music");
+
+            //Add three genres
+            tree.Root.AddChild(new MyNode("Rock"));
+            tree.Root.AddChild(new MyNode("Pop"));
+            tree.Root.AddChild(new MyNode("Classic"));
+
+            //Add metal and grunge in the rock genre
+            tree.Root.Children[0].AddChild(new MyNode("Metal"));
+            tree.Root.Children[0].AddChild(new MyNode("Grunge"));
+
+            //Add Country and Schlager to the Pop genre
+            tree.Root.Children[1].AddChild(new MyNode("Country"));
+            tree.Root.Children[1].AddChild(new MyNode("Schlager"));
+
+            //Add Baroque, Romantic and Opera to Classic
+            tree.Root.Children[2].AddChild(new MyNode("Baroque"));
+            tree.Root.Children[2].AddChild(new MyNode("Romantic"));
+            tree.Root.Children[2].AddChild(new MyNode("Opera"));
+
+            //Add French and Italian to the Opera genre
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("French"));
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("Italian"));
+
+            //Create a blank treenode
+            TreeNode treeNode = new TreeNode();
+            //Add the treenode to the treeView1 control
+            treeView1.Nodes.Add(treeNode);
+
+            //Recursively loop through the tree and add the leaves to the root node
+            loopNodes(tree.Root, treeNode);
+        }
+
+        private void loopNodes(MyNode node, TreeNode treeNode) {
+
+            //Set the current TreeNode object text value to the current MyNode value
+            treeNode.Text = node.Value;
+
+            //Loop through all the children of the current node
+            foreach (MyNode mn in node.Children) {
+                //Create a new TreeNode object to add to the current TreeNode object
+                TreeNode innerNode = new TreeNode();
+                innerNode.Text = mn.Value;
+
+                //Add the innerNode to the treeNode as a child
+                treeNode.Nodes.Add(innerNode);
+                //Check if the child has any children
+                loopNodes(mn, innerNode);
+            }
+        }
+
+MyNode.cs
+
+using System;
+using System.Collections.Generic;
+
+namespace TreeExample {
+    public class MyNode {
+        //Properties
+        public List&lt;MyNode&gt; Children { get; set; }
+        public string Value { get; set; }
+
+        //Set indexer
+        public MyNode this[int index] {
+            get { return Children[index]; }
+            set { Children[index] = value; }
+        }
+
+        //Constructor
+        public MyNode(string _value) {
+            this.Value = _value;
+            this.Children = new List&lt;MyNode&gt;();
+        }
+
+        //Add a child node
+        public void AddChild(MyNode node) {
+            this.Children.Add(node);
+        }
+
+        public void RemoveChild(int index) {
+            this.Children.RemoveAt(index);
+        }
+    }
+}
+
+MyTree.cs
+
+using System;
+using System.Collections.Generic;
+
+namespace TreeExample {
+    class MyTree {
+        //The root element
+        public MyNode Root { get; set; }
+
+        public MyTree(String value) {
+            this.Root = new MyNode(value);
+        }
+    }
+}
+
+Form1.cs
+
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace TreeExample {
+    public partial class Form1 : Form {
+        public Form1() {
+            InitializeComponent();
+
+            //Set form properties
+            this.Name = "TreeViewDemo";
+            this.Text = "MorkaLork TreeView Demo";
+
+            CreateTree();
+        }
+
+        private void CreateTree() {
+            //Create a tree with a 'Music' root node
+            MyTree tree = new MyTree("Music");
+
+            //Add three genres
+            tree.Root.AddChild(new MyNode("Rock"));
+            tree.Root.AddChild(new MyNode("Pop"));
+            tree.Root.AddChild(new MyNode("Classic"));
+
+            //Add metal and grunge in the rock genre
+            tree.Root.Children[0].AddChild(new MyNode("Metal"));
+            tree.Root.Children[0].AddChild(new MyNode("Grunge"));
+
+            //Add Country and Schlager to the Pop genre
+            tree.Root.Children[1].AddChild(new MyNode("Country"));
+            tree.Root.Children[1].AddChild(new MyNode("Schlager"));
+
+            //Add Baroque, Romantic and Opera to Classic
+            tree.Root.Children[2].AddChild(new MyNode("Baroque"));
+            tree.Root.Children[2].AddChild(new MyNode("Romantic"));
+            tree.Root.Children[2].AddChild(new MyNode("Opera"));
+
+            //Add French and Italian to the Opera genre
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("French"));
+            tree.Root.Children[2].Children[2].AddChild(new MyNode("Italian"));
+
+            //Create a blank treenode
+            TreeNode treeNode = new TreeNode();
+            //Add the treenode to the treeView1 control
+            treeView1.Nodes.Add(treeNode);
+
+            //Recursively loop through the tree and add the leaves to the root node
+            loopNodes(tree.Root, treeNode);
+        }
+
+        /// &lt;summary&gt;
+        /// Enters a node into a root node object
+        /// &lt;/summary&gt;
+        /// &lt;param name="node"&gt;The node to add&lt;/param&gt;
+        /// &lt;param name="treeNode"&gt;The root node to which all other nodes should be added&lt;/param&gt;
+        private void loopNodes(MyNode node, TreeNode treeNode) {
+
+            //Set the current TreeNode object text value to the current MyNode value
+            treeNode.Text = node.Value;
+
+            //Loop through all the children of the current node
+            foreach (MyNode mn in node.Children) {
+                //Create a new TreeNode object to add to the current TreeNode object
+                TreeNode innerNode = new TreeNode();
+                innerNode.Text = mn.Value;
+
+                //Add the innerNode to the treeNode as a child
+                treeNode.Nodes.Add(innerNode);
+                //Check if the child has any children
+                loopNodes(mn, innerNode);
+            }
+        }
+    }
+}

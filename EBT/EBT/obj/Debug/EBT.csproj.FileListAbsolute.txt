@@ -1,0 +1,9 @@
+E:\CPE\EBT\EBT\bin\Debug\EBT.exe.config
+E:\CPE\EBT\EBT\obj\Debug\EBT.csprojResolveAssemblyReference.cache
+E:\CPE\EBT\EBT\obj\Debug\EBT.Form1.resources
+E:\CPE\EBT\EBT\obj\Debug\EBT.Properties.Resources.resources
+E:\CPE\EBT\EBT\obj\Debug\EBT.csproj.GenerateResource.Cache
+E:\CPE\EBT\EBT\bin\Debug\EBT.exe
+E:\CPE\EBT\EBT\bin\Debug\EBT.pdb
+E:\CPE\EBT\EBT\obj\Debug\EBT.exe
+E:\CPE\EBT\EBT\obj\Debug\EBT.pdb

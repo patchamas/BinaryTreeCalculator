@@ -1,0 +1,4 @@
+http://cplusplus.kurttest.com/notes/stack.html#binary-expression-tree
+http://www.devx.com/dotnet/Article/37855/0/page/4
+http://www.devx.com/dotnet/Article/38088
+http://www.morkalork.com/development/view/122#.Vkx12PCYEeA
